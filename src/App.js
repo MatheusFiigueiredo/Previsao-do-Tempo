@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 
@@ -12,11 +12,11 @@ function App() {
   const handleSearch = () => {
     fetch(`https://api.weatherapi.com/v1/current.json?key=a9fa87209b6240ee8f5235442222011&q=${city}&lang=pt`)
       .then((response) => {
-        if(response.status === 200){
+        if (response.status === 200) {
           return response.json()
         }
       })
-      .then((data) =>{
+      .then((data) => {
         //console.log(data)
         setWeatherForecast(data)
       })
@@ -40,23 +40,23 @@ function App() {
 
           <button onClick={handleSearch} className="btn btn-primary btn-lg">Pesquisar</button>
 
-          {weatherForecast?(
-              <div>
-            <div className="mt-4 d-flex aling-intens-center">
-              <div>
-                <img src={weatherForecast.current.condition.icon}/>
-              </div>
-              <div>
-                <h3>{weatherForecast.current.condition.text}</h3>
-                <p className="lead">Temp: {weatherForecast.current.temp_c}°</p>
-                <p className="lead">Sensação: {weatherForecast.current.feelslike_c}°</p>
-                <p className="lead">Humidade: {weatherForecast.current.humidity}</p>
-                <p className="lead">Pressão: {weatherForecast.current.pressure_mb}</p>
-                <p className="lead">Vento: {weatherForecast.current.wind_kph} km/h</p>
+          {weatherForecast ? (
+            <div>
+              <div className="mt-4 d-flex aling-intens-center">
+                <div>
+                  <img src={weatherForecast.current.condition.icon} />
+                </div>
+                <div>
+                  <h3>{weatherForecast.current.condition.text}</h3>
+                  <p className="lead">Temp: {weatherForecast.current.temp_c}°</p>
+                  <p className="lead">Sensação: {weatherForecast.current.feelslike_c}°</p>
+                  <p className="lead">Humidade: {weatherForecast.current.humidity}</p>
+                  <p className="lead">Pressão: {weatherForecast.current.pressure_mb}</p>
+                  <p className="lead">Vento: {weatherForecast.current.wind_kph} km/h</p>
+                </div>
               </div>
             </div>
-          </div>
-            ):null}
+          ) : null}
         </div>
       </main>
     </div>

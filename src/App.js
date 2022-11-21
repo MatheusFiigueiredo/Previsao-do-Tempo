@@ -17,6 +17,7 @@ function App() {
         }
       })
       .then((data) =>{
+        //console.log(data)
         setWeatherForecast(data)
       })
   }
@@ -29,7 +30,7 @@ function App() {
 
       <main className="container">
         <div className="jumbotron">
-          <h3 className="lead">Pesquise pela cidade para obter suas informações climaticas</h3>
+          <h3>Pesquise pela cidade para obter suas informações climaticas</h3>
 
           <div className="row mb-4">
             <div className="col-md-6">
